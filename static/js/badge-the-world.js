@@ -1,5 +1,6 @@
 $(document).ready(function() {
   var map = L.mapbox.map('map', 'echristensen.map-77cfk1ql', { tileLayer: { noWrap: true} }).setView([10, 10], 3);
+  var gs = require('google-spreadsheet');
 
   var spreadsheetUrl = "https://spreadsheets.google.com/feeds/cells/0Av2oW_ggQ8i-dFBOMk1Mc2NPT0l4SEVYeGxLSm9td2c/od6/public/basic?alt=json";
   $.getJSON(spreadsheetUrl, function(resp) {
@@ -8,6 +9,15 @@ $(document).ready(function() {
       addLocation(data[i]);
     }
   });
+
+  var spreadsheet = new gs('');
+  spreadsheet.setAuth('joe.curlee@gmail.com', 'kpwovueidduddscu', function(err) {
+    spreadsheet.getInfo( function( err, data ) {
+      console.log( data.title );
+    });
+  });
+
+  kpwovueidduddscu
 
   function addLocation(entry) {
     var geocoder = L.mapbox.geocoder('echristensen.map-77cfk1ql');
