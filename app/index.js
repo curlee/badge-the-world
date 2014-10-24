@@ -48,7 +48,7 @@ app.get('/pledges', function(req, res) {
       worksheetId: config('WORKSHEETID'),
       oauth: {
         email: config('GEMAIL'),
-        keyFile: "btw.pem",
+        key: config('GKEY'),
         passphrase: 'notasecret'
       }
     },
